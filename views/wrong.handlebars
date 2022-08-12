@@ -16,40 +16,26 @@
       <button type="submit">Sign Up</button>
     </form>
   </div>
-  {{!-- Sign in --}}
-  {{#if firstName}}
+  {{!-- Sign in fail--}}
+
   <div class="form-container sign-in-container">
-    <form action="/signIn" method="POST">
-      <h1>Sign In Suceesfully</h1>
+    <form action="/" method="Get">
+      <h1>Sign In Fail</h1>
       <div class="social-container">
         <a href="https://www.facebook.com/" target="_blank" class="social"><i class="fab fa-facebook-f"></i></a>
         <a href="https://myaccount.google.com/" target="_blank" class="social"><i class="fab fa-google-plus-g"></i></a>
         <a href="https://www.linkedin.com/" target="_blank" class="social"><i class="fab fa-linkedin-in"></i></a>
       </div>
-      <span>you are logged in</span>
-      <input type="email" placeholder="Email" name="email" value="{{email}}" disabled>
+      <span>please try again!</span>
+      <input type="email" placeholder="Email" name="email" disabled>
       <input type="password" placeholder="Password" name="password" disabled>
       <a href="/"><button>BACK</button></a>
     </form>
   </div>
 
-  {{else}}
-  <div class="form-container sign-in-container">
-    <form action="/signIn" method="POST">
-      <h1>Sign in</h1>
-      <div class="social-container">
-        <a href="https://www.facebook.com/" target="_blank" class="social"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://myaccount.google.com/" target="_blank" class="social"><i class="fab fa-google-plus-g"></i></a>
-        <a href="https://www.linkedin.com/" target="_blank" class="social"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-      <span>or use your account</span>
-      <input type="email" placeholder="Email" name="email" required>
-      <input type="password" placeholder="Password" name="password" required>
-      <a href="/">Forgot your password?</a>
-      <button type="submit">Sign In</button>
-    </form>
-  </div>
-  {{/if}}
+
+
+
 
   <div class="overlay-container">
     <div class="overlay">
@@ -60,23 +46,11 @@
       </div>
 
 
-
-      {{#if firstName}}
-      <div class="overlay-panel overlay-right">
-        <h1>Hello, {{firstName}}!!</h1>
-        <p>Welcome Back!</p>
-        <a href="https://todo-list-from-heroku.herokuapp.com/">
-          <button class="ghost">Enter</button>
-        </a>
-      </div>
-
-      {{else}}
       <div class="overlay-panel overlay-right">
         <h1>Hello, Friend!</h1>
         <p>Enter your personal details and start journey with us</p>
         <button class="ghost" id="signUp" onclick="switches()">Sign Up</button>
       </div>
-      {{/if}}
 
     </div>
   </div>
@@ -102,5 +76,4 @@
       container.classList.remove("right-panel-active");
     });
   }
-
 </script>

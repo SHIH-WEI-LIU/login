@@ -13,7 +13,7 @@ router.post('/signIn', (req, res) => {
   const { email, password } = req.body
   LOGIN.findOne({ email, password })
     .then(data =>
-      data ? res.render("index", { firstName: data.firstName, email: data.email }) : res.render("index")
+      data ? res.render("index", { firstName: data.firstName, email: data.email }) : res.render("wrong")
     )
     .catch(error => console.error(error))
 })
@@ -25,5 +25,6 @@ router.post("/:create", (req, res) => {
     .then(() => res.redirect("/"))
     .catch(error => console.error(error))
 })
+
 
 module.exports = router // 匯出路由器
