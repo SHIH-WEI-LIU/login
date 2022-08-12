@@ -1,0 +1,105 @@
+{{!-- index.hbs --}}
+<div class="container" id="container">
+  {{!-- Create Account --}}
+  <div class="form-container sign-up-container">
+    <form action="/create" method="POST">
+      <h1>Create Account</h1>
+      <div class="social-container">
+        <a href="https://www.facebook.com/" target="_blank" class="social"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://myaccount.google.com/" target="_blank" class="social"><i class="fab fa-google-plus-g"></i></a>
+        <a href="https://www.linkedin.com/" target="_blank" class="social"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <span>or use your email for registration</span>
+      <input type="text" placeholder="Name" name="firstName" required>
+      <input type="email" placeholder="Email" name="email" required>
+      <input type="password" placeholder="Password" name="password" required>
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+  {{!-- Sign in --}}
+  {{#if firstName}}
+  <div class="form-container sign-in-container">
+    <form action="/signIn" method="POST">
+      <h1>Sign In Suceesfully</h1>
+      <div class="social-container">
+        <a href="https://www.facebook.com/" target="_blank" class="social"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://myaccount.google.com/" target="_blank" class="social"><i class="fab fa-google-plus-g"></i></a>
+        <a href="https://www.linkedin.com/" target="_blank" class="social"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <span>you are logged in</span>
+      <input type="email" placeholder="Email" name="email" value="{{email}}" disabled>
+      <input type="password" placeholder="Password" name="password" disabled>
+      <a href="/"><button>BACK</button></a>
+    </form>
+  </div>
+
+  {{else}}
+  <div class="form-container sign-in-container">
+    <form action="/signIn" method="POST">
+      <h1>Sign in</h1>
+      <div class="social-container">
+        <a href="https://www.facebook.com/" target="_blank" class="social"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://myaccount.google.com/" target="_blank" class="social"><i class="fab fa-google-plus-g"></i></a>
+        <a href="https://www.linkedin.com/" target="_blank" class="social"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <span>or use your account</span>
+      <input type="email" placeholder="Email" name="email" required>
+      <input type="password" placeholder="Password" name="password" required>
+      <a href="/">Forgot your password?</a>
+      <button type="submit">Sign In</button>
+    </form>
+  </div>
+  {{/if}}
+
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-left">
+        <h1>Welcome Back!</h1>
+        <p>To keep connected with us please login with your personal info</p>
+        <button class="ghost" id="signIn" onclick="switches()">Sign In</button>
+      </div>
+
+
+
+      {{#if firstName}}
+      <div class="overlay-panel overlay-right">
+        <h1>Hello, {{firstName}}!!</h1>
+        <p>Welcome Back!</p>
+        <a href="https://todo-list-from-heroku.herokuapp.com/">
+          <button class="ghost">Enter</button>
+        </a>
+      </div>
+
+      {{else}}
+      <div class="overlay-panel overlay-right">
+        <h1>Hello, Friend!</h1>
+        <p>Enter your personal details and start journey with us</p>
+        <button class="ghost" id="signUp" onclick="switches()">Sign Up</button>
+      </div>
+      {{/if}}
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>
+    We wish you have a nice day !
+  </p>
+</footer>
+
+<script>
+  function switches() {
+    const signUpButton = document.querySelector('#signUp');
+    const signInButton = document.querySelector('#signIn');
+    const container = document.querySelector('#container');
+
+    signUpButton.addEventListener('click', () => {
+      container.classList.add("right-panel-active");
+    });
+
+    signInButton.addEventListener('click', () => {
+      container.classList.remove("right-panel-active");
+    });
+  }
+</script>
